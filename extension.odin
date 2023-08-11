@@ -20,8 +20,6 @@ import "core:runtime"
 //     return 0
 // }
 
-plugin_info: ^plugin_info_t
-
 window_handle :: proc() -> rawptr {
     return plugin_info.hwnd_main
 }
