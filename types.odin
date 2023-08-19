@@ -85,6 +85,7 @@ REAPER_PeakBuild_Interface :: struct {}
 ISimpleMediaDecoder :: struct {}
 PCM_source :: struct {}
 PCM_sink :: struct {}
+ProjectStateContext :: struct {}
 //========================================================
 
 ReaProject :: struct {}
@@ -163,4 +164,11 @@ PCM_source_transfer_t :: struct {
     approximate_playback_latency: f64 ,
     absolute_time_s: f64 ,
     force_bpm: f64 ,
+}
+
+project_config_extension_t :: struct {
+    ProcessExtensionLine: proc "c" (line: cstring, ctx: ^ProjectStateContext, isUndo: bool, reg: ^project_config_extension_t) -> bool,
+    SaveExtensionConfig: proc "c" (ctx: ^ProjectStateContext, isUndo: bool, reg: ^project_config_extension_t),
+    BeginLoadProjectState: proc "c" (isUndo: bool, reg: ^project_config_extension_t),
+    userData: rawptr,
 }
