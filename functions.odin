@@ -1188,7 +1188,7 @@ GoToMarker: proc "c" (proj: ^ReaProject, marker_index: c.int, use_timeline_order
 GoToRegion: proc "c" (proj: ^ReaProject, region_index: c.int, use_timeline_order: bool)
 GR_SelectColor: proc "c" (hwnd: HWND, colorOut: ^c.int) -> c.int
 GSC_mainwnd: proc "c" (t: c.int) -> c.int
-guidToString: proc "c" (g: ^GUID, destNeed64: cstring)
+guidToString: proc "c" (g: ^GUID, destNeed64: [^]byte)
 HasExtState: proc "c" (section: cstring, key: cstring) -> bool
 HasTrackMIDIPrograms: proc "c" (track: c.int) -> cstring
 HasTrackMIDIProgramsEx: proc "c" (proj: ^ReaProject, track: ^MediaTrack) -> cstring
