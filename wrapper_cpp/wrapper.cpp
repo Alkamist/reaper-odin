@@ -8,7 +8,7 @@
 //     va_end(args);
 // }
 
-extern "C" void ProjectStateContext_AddLineString(ProjectStateContext *ctx, const char *str) {
+extern "C" void ProjectStateContext_AddLine(ProjectStateContext *ctx, const char *str) {
     ctx->AddLine(str);
 }
 
