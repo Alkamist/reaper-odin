@@ -2,10 +2,25 @@ package reaper
 
 import "core:c"
 
+// This is how to export a Reaper extension:
+//
+// @export
+// ReaperPluginEntry :: proc "c" (hInst: rawptr, rec: ^reaper.plugin_info_t) -> c.int {
+//     context = runtime.default_context()
+//     if rec != nil {
+//         reaper.load_api_functions(rec)
+//
+//         USER CODE HERE
+//
+//         return 1
+//     }
+//     return 0
+// }
+
 // There are probably bugs in some of these bindings.
 // This function loads the API function pointers.
 
-load_api_functions :: proc() {
+load_api_functions :: proc(plugin_info: ^plugin_info_t) {
     AddCustomizableMenu = cast(type_of(AddCustomizableMenu))plugin_info.GetFunc("AddCustomizableMenu")
     AddExtensionsMainMenu = cast(type_of(AddExtensionsMainMenu))plugin_info.GetFunc("AddExtensionsMainMenu")
     AddMediaItemToTrack = cast(type_of(AddMediaItemToTrack))plugin_info.GetFunc("AddMediaItemToTrack")
